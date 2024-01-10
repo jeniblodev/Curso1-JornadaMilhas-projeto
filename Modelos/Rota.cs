@@ -16,3 +16,6 @@ internal class Rota
         Destino = destino;
     }
 }
+
+//aqui na rota vale a pena deixar uma lista pronta de rotas e no cadastro somente informar qual a rota será utilizada?
+
