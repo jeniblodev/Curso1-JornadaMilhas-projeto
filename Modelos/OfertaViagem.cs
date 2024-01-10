@@ -5,14 +5,14 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace JornadaMilhasV0.Modelos;
-internal class OfertaViagem
+public class OfertaViagem
 {
     public Rota Rota { get; set; }
     public DateTime DataIda { get; set; }
     public DateTime DataVolta { get; set; }
     public double Preco { get; set; }
 
-    List<OfertaViagem> ofertaViagem = new List<OfertaViagem>();
+    public List<OfertaViagem> ofertaViagem = new List<OfertaViagem>();
 
     public OfertaViagem()
     {
