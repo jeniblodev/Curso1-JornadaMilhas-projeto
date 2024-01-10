@@ -1,9 +1,10 @@
 ﻿using JornadaMilhasV0.Modelos;
 using System.Net.Http.Headers;
 
-var ofertaViagem = new OfertaViagem();
+List<OfertaViagem> listaOfertasViagem = new List<OfertaViagem>();
+var gerenciador = new GerenciadorDeOfertas(listaOfertasViagem);
 
-ofertaViagem.CarregarOfertas();
+gerenciador.CarregarOfertas();
 
 while (true)
 {
@@ -15,10 +16,10 @@ while (true)
     switch (opcao)
     {
         case "1":
-            ofertaViagem.CadastrarOferta();
+            gerenciador.CadastrarOferta();
             break;
         case "2":
-            ofertaViagem.ExibirTodasAsOfertas();
+            gerenciador.ExibirTodasAsOfertas();
             break;
         case "3":
             Console.WriteLine("Obrigada por utilizar o Jornada Milhas. Até mais!");

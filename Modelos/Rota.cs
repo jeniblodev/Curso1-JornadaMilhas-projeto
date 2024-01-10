@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace JornadaMilhasV0.Modelos;
-internal class Rota
+public class Rota
 {
     public string Origem { get; set; }
     public string Destino { get; set; }
