@@ -1,7 +1,4 @@
-using System.Linq.Expressions;
-using Xunit;
 using JornadaMilhasV0.Modelos;
-using System.Text.RegularExpressions;
 
 namespace JornadaMilhas.Testes;
 

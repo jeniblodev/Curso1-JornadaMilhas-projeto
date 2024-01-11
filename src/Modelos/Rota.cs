@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace JornadaMilhasV0.Modelos;
+﻿namespace JornadaMilhasV0.Modelos;
 public class Rota
 {
     public string Origem { get; set; }

@@ -23,7 +23,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\JornadaMilhasV0\JornadaMilhasV0.csproj" />
+    <ProjectReference Include="..\..\src\JornadaMilhasV0.csproj" />
   </ItemGroup>
 
 </Project>

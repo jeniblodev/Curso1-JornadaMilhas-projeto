@@ -1,5 +1,6 @@
-﻿using JornadaMilhasV0.Modelos;
-using System.Net.Http.Headers;
+﻿using JornadaMilhasV0.Gerenciador;
+using JornadaMilhasV0.Modelos;
+
 
 List<OfertaViagem> listaOfertasViagem = new List<OfertaViagem>();
 var gerenciador = new GerenciadorDeOfertas(listaOfertasViagem);
@@ -11,7 +12,7 @@ while (true)
     ExibirMenu();
 
     Console.WriteLine("Boas vindas ao Jornada Milhas. Escolha uma opção:");
-    string opcao = Console.ReadLine();
+    string opcao = Console.ReadLine()!;
 
     switch (opcao)
     {

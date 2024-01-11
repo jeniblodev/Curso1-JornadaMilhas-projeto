@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using JornadaMilhasV0.Modelos;
 
-namespace JornadaMilhasV0.Modelos;
+namespace JornadaMilhasV0.Gerenciador;
 public class GerenciadorDeOfertas
 {
     private List<OfertaViagem> ofertaViagem = new List<OfertaViagem>();
