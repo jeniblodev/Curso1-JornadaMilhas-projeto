@@ -34,6 +34,10 @@ public class GerenciadorDeOfertas
             Console.WriteLine("Data de volta inválida.");
             return;
         }
+/*        } else if (dataVolta < dataIda) {
+            Console.WriteLine("Data de volta inválida.");
+            return;
+        }*/
 
         Console.WriteLine("Informe o preço: ");
         double preco;

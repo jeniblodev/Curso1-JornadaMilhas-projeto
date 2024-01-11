@@ -21,37 +21,79 @@ public class OfertaViagemTeste
 
     }
 
-    [Fact(DisplayName = "TesteNaoDeveCriarOfertaComOrigemEDestinoVazios")]
-    public void TesteNaoDeveCriarOfertaComOrigemEDestinoVazios()
+    [Fact(DisplayName = "TesteQueValidaObjetoOferta")]
+    public void TesteQueValidaObjetoOferta()
     {
-/*        Rota rota = new Rota("", "");*/
+        Rota rota = new Rota("Origem", "Destino");
         DateTime dataIda = new DateTime(2024, 1, 1);
         DateTime dataVolta = new DateTime(2024, 1, 5);
-        double preco = 100.0;
+        double preco = 100;
 
-        OfertaViagem oferta = new OfertaViagem(null, dataIda, dataVolta, preco);
+        OfertaViagem oferta = new OfertaViagem(rota, dataIda, dataVolta, preco);        
 
-        Assert.Null(oferta);
+        Assert.Contains("Origem",oferta.ToString());
 
     }
 
-    /*    [Fact(DisplayName = "TesteDeveCadastrarOfertaNaLista")]
-        public void DeveCadastrarOfertaNaLista()
-        {
-            Rota rota = new Rota("OrigemTeste", "DestinoTeste");
-            DateTime dataIda = new DateTime(2024, 1, 1);
-            DateTime dataVolta = new DateTime(2024, 1, 5);
-            double preco = 100.0;
-            List<OfertaViagem> listaDeOfertas = new List<OfertaViagem>();
+    [Fact(DisplayName = "TestaSeObjetoCriadoEhValido")]
+    public void TestaSeObjetoCriadoEhValido()
+    {
+        //Arrange
+        Rota rota = new Rota("Origem", "Destino");
+        DateTime dataIda = new DateTime(2024, 1, 1);
+        DateTime dataVolta = new DateTime(2024, 1, 5);
+        double preco = 100;
 
-            OfertaViagem oferta = new OfertaViagem(rota, dataIda, dataVolta, preco);
-            var gerenciador = new GerenciadorDeOfertas(listaDeOfertas);
+        OfertaViagem oferta = new OfertaViagem(rota, dataIda, dataVolta, preco);
 
-            var resultado = gerenciador.AdicionarOfertaNaLista(oferta);
+        //Act
+        var resultado = oferta.EhValido();
 
-            Assert.NotEmpty(listaDeOfertas);
-            Assert.True(resultado);
-        }*/
+        //Assert
+        Assert.True(resultado);
+
+    }
+
+    [Fact(DisplayName = "EhValidoOfertaDeveRetornarExcecaoQuandoDestinoNulo")]
+    public void EhValidoOfertaDeveRetornarExcecaoQuandoDestinoNulo()
+    {
+        //Arrange
+        Rota rota = null;
+        DateTime dataIda = new DateTime(2024, 1, 1);
+        DateTime dataVolta = new DateTime(2024, 1, 5);
+        double preco = 100;
+
+        OfertaViagem oferta = new OfertaViagem(rota, dataIda, dataVolta, preco);
+
+        //Act+Assert
+        Assert.Throws<System.FormatException>(                 
+                 () => oferta.EhValido()
+        );
+             
+        
+    }
+
+    [Theory]
+    [InlineData("Manaus", "São Paulo", "2024-01-01", "2024-01-02", 100)]
+    [InlineData("Recife", "São Paulo", "2024-01-01", "2024-01-02", 110)]
+    [InlineData("Vitória", "São Paulo", "2024-01-01", "2024-01-02", 120)]
+    [InlineData("Rio de Janeiro", "São Paulo", "2024-01-01", "2024-01-02", 250)]
+    public void TestaSeObjetosCriadoSaoValidos(string origem, string destino, string dataIn, string dataVol, double preco)
+    {
+        //Arrange
+        Rota rota = new Rota(origem,destino);
+        DateTime dataIda = DateTime.Parse(dataIn);
+        DateTime dataVolta = DateTime.Parse(dataVol);
+        OfertaViagem oferta = new OfertaViagem(rota, dataIda, dataVolta, preco);
+
+        //Act
+        var resultado = oferta.EhValido();
+
+        //Assert
+        Assert.True(resultado);
+
+    }
+
 
 
 }
