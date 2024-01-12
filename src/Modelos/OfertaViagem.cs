@@ -13,6 +13,7 @@ public class OfertaViagem
         DataIda = dataIda;
         DataVolta = dataVolta;
         Preco = preco;
+        this.EhValido();
     }
 
     public override string ToString()

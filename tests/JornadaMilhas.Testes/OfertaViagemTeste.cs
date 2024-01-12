@@ -62,12 +62,12 @@ public class OfertaViagemTeste
         DateTime dataIda = new DateTime(2024, 1, 1);
         DateTime dataVolta = new DateTime(2024, 1, 5);
         double preco = 100;
+        OfertaViagem oferta;
 
-        OfertaViagem oferta = new OfertaViagem(rota, dataIda, dataVolta, preco);
 
         //Act+Assert
         Assert.Throws<System.FormatException>(                 
-                 () => oferta.EhValido()
+                 () => oferta = new OfertaViagem(rota, dataIda, dataVolta, preco)
         );
              
         
@@ -94,6 +94,24 @@ public class OfertaViagemTeste
 
     }
 
+    [Theory(DisplayName = "TestaGerarExcecoesDadosInvalidos")]
+    [InlineData("", null, "2024-01-01", "2024-01-02", 0)]
+    [InlineData(null, "São Paulo", "2024-01-01", "2024-01-02", -1)]
+    [InlineData("Vitória", "São Paulo", "2024-01-01", "2024-01-01", 0)]
+    [InlineData("Rio de Janeiro", "São Paulo", "2024-01-01", "2024-01-02", -500)]
+    public void TestaGerarExcecoesDadosInvalidos(string origem, string destino, string dataIn, string dataVol, double preco)
+    {
+        //Arrange
+        Rota rota = new Rota(origem, destino);
+        DateTime dataIda = DateTime.Parse(dataIn);
+        DateTime dataVolta = DateTime.Parse(dataVol);
+        OfertaViagem oferta;
+
+        //Act+Assert
+        Assert.Throws<System.FormatException>(
+                 () => oferta = new OfertaViagem(rota, dataIda, dataVolta, preco));
+
+    }
 
 
 }
