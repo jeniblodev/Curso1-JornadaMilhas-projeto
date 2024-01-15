@@ -64,7 +64,6 @@ public class OfertaViagemTeste
         double preco = 100;
         OfertaViagem oferta;
 
-
         //Act+Assert
         Assert.Throws<System.FormatException>(                 
                  () => oferta = new OfertaViagem(rota, dataIda, dataVolta, preco)
