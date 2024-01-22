@@ -124,10 +124,10 @@ public class OfertaViagemTeste
         var desconto = 10.0;
 
         //Act
-        var ofertaViagem = new OfertaViagem(rota, dataIda, dataVolta, preco, desconto);
+        var ofertaViagem = new OfertaViagem(rota, dataIda, dataVolta, preco) { Desconto = desconto };
 
         //Assert
-        Assert.Equal(TestaDefinirCorretamenteDesconto, ofertaViagem.Desconto);
+        Assert.Equal(desconto, ofertaViagem.Desconto);
     }
 
 
