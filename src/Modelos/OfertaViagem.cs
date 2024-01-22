@@ -7,6 +7,7 @@ public class OfertaViagem
     public double Preco { get; set; }
     private bool valido = false;
     public double Desconto { get; set; }
+    public bool StatusDisponivel { get; private set; } = true;
 
     public OfertaViagem(Rota rota, DateTime dataIda, DateTime dataVolta, double preco)
     {
@@ -14,12 +15,18 @@ public class OfertaViagem
         DataIda = dataIda;
         DataVolta = dataVolta;
         Preco = preco;
+        StatusDisponivel = true;
         this.EhValido();
     }
 
     public override string ToString()
     {
         return $"Origem: {Rota.Origem}, Destino: {Rota.Destino}, Data de Ida: {DataIda.ToShortDateString()}, Data de Volta: {DataVolta.ToShortDateString()}, Preço: {Preco:C}, Desconto: {Desconto}";
+    }
+
+    public void Inativar()
+    {
+        StatusDisponivel = false;
     }
 
     public bool EhValido()

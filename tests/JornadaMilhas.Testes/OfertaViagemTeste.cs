@@ -130,5 +130,39 @@ public class OfertaViagemTeste
         Assert.Equal(desconto, ofertaViagem.Desconto);
     }
 
+    [Fact]
+    public void TestaPropriedadeStatusDisponivelTruePorPadrao()
+    {
+        // Arrange
+        var rota = new Rota("Origem", "Destino");
+        var dataIda = DateTime.Now;
+        var dataVolta = DateTime.Now.AddDays(7);
+        var preco = 100.0;
+
+        // Act
+        var ofertaViagem = new OfertaViagem(rota, dataIda, dataVolta, preco);
+
+        // Assert
+        Assert.True(ofertaViagem.StatusDisponivel);
+    }
+
+    [Fact]
+    public void TesteAlteraStatusParaIndisponivelComMetodoInativar()
+    {
+        // Arrange
+        var rota = new Rota("Origem", "Destino");
+        var dataIda = DateTime.Now;
+        var dataVolta = DateTime.Now.AddDays(7);
+        var preco = 100.0;
+        var desconto = 10.0;
+        var ofertaViagem = new OfertaViagem(rota, dataIda, dataVolta, preco) { Desconto = desconto};
+
+        // Act
+        ofertaViagem.Inativar();
+
+        // Assert
+        Assert.False(ofertaViagem.StatusDisponivel);
+    }
+
 
 }
