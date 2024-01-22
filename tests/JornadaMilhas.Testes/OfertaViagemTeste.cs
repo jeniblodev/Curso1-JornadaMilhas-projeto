@@ -113,5 +113,22 @@ public class OfertaViagemTeste
 
     }
 
+    [Fact]
+    public void TestaDefinirCorretamenteDesconto()
+    {
+        //Arrange
+        var rota = new Rota("Origem", "Destino");
+        var dataIda = DateTime.Now;
+        var dataVolta = DateTime.Now.AddDays(7);
+        var preco = 100.0;
+        var desconto = 10.0;
+
+        //Act
+        var ofertaViagem = new OfertaViagem(rota, dataIda, dataVolta, preco, desconto);
+
+        //Assert
+        Assert.Equal(TestaDefinirCorretamenteDesconto, ofertaViagem.Desconto);
+    }
+
 
 }
