@@ -6,13 +6,15 @@ public class OfertaViagem
     public DateTime DataVolta { get; set; }
     public double Preco { get; set; }
     private bool valido = false;
+    public double Desconto { get; set; }
 
-    public OfertaViagem(Rota rota, DateTime dataIda, DateTime dataVolta, double preco)
+    public OfertaViagem(Rota rota, DateTime dataIda, DateTime dataVolta, double preco, double desconto)
     {
         Rota = rota;
         DataIda = dataIda;
         DataVolta = dataVolta;
         Preco = preco;
+        Desconto = desconto;
         this.EhValido();
     }
 
