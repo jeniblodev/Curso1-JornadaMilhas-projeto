@@ -4,8 +4,8 @@ namespace JornadaMilhas.Testes;
 
 public class OfertaViagemTeste
 {
-    [Fact(DisplayName = "TesteDeveCriarOferta")]
-    public void TesteDeveCriarOferta()
+    [Fact(DisplayName = "DeveCriarOfertaCorretamente")]
+    public void DeveCriarOfertaCorretamente()
     {
         Rota rota = new Rota("OrigemTeste", "DestinoTeste");
         DateTime dataIda = new DateTime(2024, 1, 1);
@@ -21,8 +21,8 @@ public class OfertaViagemTeste
 
     }
 
-    [Fact(DisplayName = "TesteQueValidaObjetoOferta")]
-    public void TesteQueValidaObjetoOferta()
+    [Fact(DisplayName = "ValidaObjetoOfertaDeveConterOrigemNoToString")]
+    public void ValidaObjetoOfertaDeveConterOrigemNoToString()
     {
         Rota rota = new Rota("Origem", "Destino");
         DateTime dataIda = new DateTime(2024, 1, 1);
@@ -35,8 +35,8 @@ public class OfertaViagemTeste
 
     }
 
-    [Fact(DisplayName = "TestaSeObjetoCriadoEhValido")]
-    public void TestaSeObjetoCriadoEhValido()
+    [Fact(DisplayName = "DeveRetornarVerdadeiroSeObjetoCriadoEhValido")]
+    public void DeveRetornarVerdadeiroSeObjetoCriadoEhValido()
     {
         //Arrange
         Rota rota = new Rota("Origem", "Destino");
@@ -78,7 +78,7 @@ public class OfertaViagemTeste
     [InlineData("Recife", "São Paulo", "2024-01-01", "2024-01-02", 110)]
     [InlineData("Vitória", "São Paulo", "2024-01-01", "2024-01-02", 120)]
     [InlineData("Rio de Janeiro", "São Paulo", "2024-01-01", "2024-01-02", 250)]
-    public void TestaSeObjetosCriadoSaoValidos(string origem, string destino, string dataIn, string dataVol, double preco)
+    public void DeveGerarExcecoesParaDadosInvalidos(string origem, string destino, string dataIn, string dataVol, double preco)
     {
         //Arrange
         Rota rota = new Rota(origem,destino);
@@ -113,8 +113,8 @@ public class OfertaViagemTeste
 
     }
 
-    [Fact]
-    public void TestaDefinirCorretamenteDesconto()
+    [Fact(DisplayName = "DeveDefinirCorretamenteDesconto")]
+    public void DeveDefinirCorretamenteDesconto()
     {
         //Arrange
         var rota = new Rota("Origem", "Destino");
@@ -130,8 +130,8 @@ public class OfertaViagemTeste
         Assert.Equal(desconto, ofertaViagem.Desconto);
     }
 
-    [Fact]
-    public void TestaPropriedadeStatusDisponivelTruePorPadrao()
+    [Fact(DisplayName = "PropriedadeStatusDeveSerDisponivelTruePorPadrao")]
+    public void PropriedadeStatusDeveSerDisponivelTruePorPadrao()
     {
         // Arrange
         var rota = new Rota("Origem", "Destino");
@@ -146,8 +146,8 @@ public class OfertaViagemTeste
         Assert.True(ofertaViagem.StatusDisponivel);
     }
 
-    [Fact]
-    public void TesteAlteraStatusParaIndisponivelComMetodoInativar()
+    [Fact(DisplayName = "AlteraStatusParaIndisponivelComMetodoInativar")]
+    public void AlteraStatusParaIndisponivelComMetodoInativar()
     {
         // Arrange
         var rota = new Rota("Origem", "Destino");
